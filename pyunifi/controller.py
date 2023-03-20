@@ -80,6 +80,8 @@ class Controller:  # pylint: disable=R0902,R0904
         :param site_id: the site ID to connect to
         :param ssl_verify: Verify the controllers SSL certificate,
             can also be "path/to/custom_cert.pem"
+        :param for_hotspot: flag that the credentials are for a hotspot
+            operator account
         """
 
         self.log = logging.getLogger(__name__ + ".Controller")
