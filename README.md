@@ -54,6 +54,7 @@ Create a Controller object.
  - `version`	-- the base version of the controller API [v4|v5|unifiOS|UDMP-unifiOS]
  - `site_id`	-- the site ID to access
  - `ssl_verify`	-- Verify the controllers SSL certificate, default=True, can also be False or "path/to/custom_cert.pem"
+ - `for_hotspot` -- flag that the credentials are for a hotspot operator account
 
 ### `block_client(self, mac)`
 
