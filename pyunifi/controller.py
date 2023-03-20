@@ -69,6 +69,7 @@ class Controller:  # pylint: disable=R0902,R0904
             version="v5",
             site_id="default",
             ssl_verify=True,
+            for_hotspot=False,
     ):
         """
         :param host: the address of the controller host; IP or name
@@ -91,6 +92,7 @@ class Controller:  # pylint: disable=R0902,R0904
         self.password = password
         self.site_id = site_id
         self.ssl_verify = ssl_verify
+        self.for_hotspot = for_hotspot
 
         if version == "unifiOS":
             self.url = "https://" + host + "/proxy/network/"
@@ -182,9 +184,13 @@ class Controller:  # pylint: disable=R0902,R0904
         self.session = requests.Session()
         self.session.verify = self.ssl_verify
 
+        params = {"username": self.username, "password": self.password}
+        if self.for_hotspot:
+            params.update({"for_hotspot": True, "site_id": self.site_id})
+
         response = self.session.post(
             self.auth_url,
-            json={"username": self.username, "password": self.password},
+            json=params,
             headers=self.headers,
         )
 
