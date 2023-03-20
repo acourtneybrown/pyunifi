@@ -188,7 +188,7 @@ class Controller:  # pylint: disable=R0902,R0904
 
         params = {"username": self.username, "password": self.password}
         if self.for_hotspot:
-            params.update({"for_hotspot": True, "site_id": self.site_id})
+            params.update({"for_hotspot": True, "site_name": self.site_id})
 
         response = self.session.post(
             self.auth_url,
